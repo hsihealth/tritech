@@ -42,7 +42,7 @@ module Tritech
         section = SPECIFICATION.sections.find { |s| s.match(record[:record_type])}
         builder << section.format(record)
       rescue => ex
-        errors << {:exception => ex.to_s, :record => record}
+        errors << {:exception => "#{ex.to_s}: #{ex.backtrace.first}", :record => record}
       end
     end
     #Tritech Amazon is a windows product, so it needs
